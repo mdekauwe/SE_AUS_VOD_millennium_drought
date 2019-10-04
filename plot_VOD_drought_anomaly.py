@@ -113,7 +113,7 @@ def main(fname, plot_dir):
     #cbar.ax.set_yticklabels([' ', '-30', '-15', '0', '15', '<=70'])
 
     ofname = os.path.join(plot_dir, "vod.png")
-    fig.savefig(ofname, dpi=150, bbox_inches='tight',
+    fig.savefig(ofname, dpi=300, bbox_inches='tight',
                 pad_inches=0.1)
 
 
@@ -168,6 +168,6 @@ if __name__ == "__main__":
     if not os.path.exists(plot_dir):
         os.makedirs(plot_dir)
 
-    fname = "raw/Australia_VOD_monthly_1993_2012_masked_gapfilled.nc"
-
+    #fname = "raw/Australia_VOD_monthly_1993_2012_masked_gapfilled.nc"
+    fname = "raw/Australia_VOD_monthly_1993_2012_non-masked_gapfilled_no_missing.nc"
     main(fname, plot_dir)
