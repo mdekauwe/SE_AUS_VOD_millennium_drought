@@ -107,7 +107,16 @@ def main(fname, plot_dir):
         #ax = fig.add_subplot(rows, cols, i+1, projection=ccrs.PlateCarree())
         plims = plot_map(ax, chg, cmap, i, top, bottom, left, right)
 
+        import cartopy.feature as cfeature
+        states = cfeature.NaturalEarthFeature(category='cultural',
+                                              name='admin_1_states_provinces_lines',
+                                              scale='10m',facecolor='none')
 
+        # plot state border
+        SOURCE = 'Natural Earth'
+        LICENSE = 'public domain'
+        ax.add_feature(states, edgecolor='black', lw=0.5)
+        
     cbar = axgr.cbar_axes[0].colorbar(plims)
     cbar.ax.set_title("VOD anomaly\n(%)", fontsize=16)
     #cbar.ax.set_yticklabels([' ', '-30', '-15', '0', '15', '<=70'])
@@ -130,8 +139,8 @@ def plot_map(ax, var, cmap, i, top, bottom, left, right):
     ax.coastlines(resolution='10m', linewidth=1.0, color='black')
     #ax.add_feature(cartopy.feature.OCEAN)
 
-    ax.set_xlim(140, 154)
-    ax.set_ylim(-39.4, -28)
+    ax.set_xlim(140.7, 154)
+    ax.set_ylim(-39.2, -28.1)
 
     if i == 0 or i >= 5:
 
